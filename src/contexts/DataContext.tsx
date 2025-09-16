@@ -35,13 +35,14 @@ export interface LibraryItem {
   remarks: string;
   approved: boolean;
   createdDate: string;
+  uploadedFile: File | null; // <-- change type here
 }
 
 export interface Vendor {
   id: string;
   vendorCode: string;
   name: string;
-  supplyType: 'regular' | 'one-time';
+  supplyType: 'regular' | 'one-time' | 'Black Listed';
   annualSaleValue: number;
   qualityCheckEligible: boolean;
   lastAuditDate: string;
@@ -61,6 +62,40 @@ interface DataContextType {
 }
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
+
+// const mockVendors: Vendor[] = [
+//   {
+//     id: '1',
+//     vendorCode: 'V001',
+//     name: 'ABC Suppliers Ltd',
+//     supplyType: 'regular',
+//     annualSaleValue: 1500000,
+//     qualityCheckEligible: true,
+//     lastAuditDate: '2024-01-15',
+//     performanceRating: 4.5,
+//   },
+//   {
+//     id: '2',
+//     vendorCode: 'V002',
+//     name: 'XYZ Materials Corp',
+//     supplyType: 'one-time',
+//     annualSaleValue: 750000,
+//     qualityCheckEligible: true,
+//     lastAuditDate: '2024-02-10',
+//     performanceRating: 4.2,
+//   },
+//   {
+//     id: '3',
+//     vendorCode: 'V003',
+//     name: 'MNO Traders',
+//     supplyType: 'Black Listed',
+//     annualSaleValue: 550000,
+//     qualityCheckEligible: true,
+//     lastAuditDate: '2024-02-10',
+//     performanceRating: 4.2,
+//   },
+// ];
+
 
 const mockVendors: Vendor[] = [
   {
@@ -82,6 +117,16 @@ const mockVendors: Vendor[] = [
     qualityCheckEligible: true,
     lastAuditDate: '2024-02-10',
     performanceRating: 4.2,
+  },
+  {
+    id: '3',
+    vendorCode: 'V003',
+    name: 'MNO Traders',
+    supplyType: 'Black Listed',
+    annualSaleValue: 550000,
+    qualityCheckEligible: false,
+    lastAuditDate: '2024-02-10',
+    performanceRating: 2,
   },
 ];
 
@@ -110,6 +155,78 @@ const mockRequests: Request[] = [
 const mockLibraryItems: LibraryItem[] = [
   {
     id: '1',
+    itemDescription: 'Steel Pipes - 2 inch diameter',
+    grnNo: 'GRN001',
+    grnDate: '2024-01-15',
+    supplierName: 'ABC Suppliers Ltd',
+    poNo: 'PO12345',
+    grnQuantity: 100,
+    itemRate: 250,
+    itemCode: 'ITM001',
+    vendorCode: 'V001',
+    plant: 'Plant 1',
+    category: 'Fabrication',
+    regularSupply: true,
+    physicalSample: true,
+    repeatInspection: false,
+    userName: 'Admin SP',
+    technicalSpecs: 'ASTM A53 Grade B',
+    inspectionMethod: 'Visual',
+    outcome: 'Passed',
+    remarks: 'Quality meets specifications',
+    approved: true,
+    createdDate: '2024-01-20',
+  },
+  {
+    id: '2',
+    itemDescription: 'Steel Pipes - 2 inch diameter',
+    grnNo: 'GRN001',
+    grnDate: '2024-01-15',
+    supplierName: 'ABC Suppliers Ltd',
+    poNo: 'PO12345',
+    grnQuantity: 100,
+    itemRate: 250,
+    itemCode: 'ITM001',
+    vendorCode: 'V001',
+    plant: 'Plant 1',
+    category: 'Fabrication',
+    regularSupply: true,
+    physicalSample: true,
+    repeatInspection: false,
+    userName: 'Admin SP',
+    technicalSpecs: 'ASTM A53 Grade B',
+    inspectionMethod: 'Visual',
+    outcome: 'Passed',
+    remarks: 'Quality meets specifications',
+    approved: true,
+    createdDate: '2024-01-20',
+  },
+  {
+    id: '3',
+    itemDescription: 'Steel Pipes - 2 inch diameter',
+    grnNo: 'GRN001',
+    grnDate: '2024-01-15',
+    supplierName: 'ABC Suppliers Ltd',
+    poNo: 'PO12345',
+    grnQuantity: 100,
+    itemRate: 250,
+    itemCode: 'ITM001',
+    vendorCode: 'V001',
+    plant: 'Plant 1',
+    category: 'Fabrication',
+    regularSupply: true,
+    physicalSample: true,
+    repeatInspection: false,
+    userName: 'Admin SP',
+    technicalSpecs: 'ASTM A53 Grade B',
+    inspectionMethod: 'Visual',
+    outcome: 'Passed',
+    remarks: 'Quality meets specifications',
+    approved: true,
+    createdDate: '2024-01-20',
+  },
+  {
+    id: '4',
     itemDescription: 'Steel Pipes - 2 inch diameter',
     grnNo: 'GRN001',
     grnDate: '2024-01-15',

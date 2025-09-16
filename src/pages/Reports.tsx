@@ -245,43 +245,10 @@ export default function Reports() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Plant-wise Report */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Plant-wise Analysis</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={plantWiseData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="plant" />
-              <YAxis />
-              <Tooltip 
-                formatter={(value, name) => [value, name === 'approved' ? 'Approved' : name === 'rejected' ? 'Rejected' : 'Total']}
-              />
-              <Bar dataKey="approved" fill="#10B981" name="approved" />
-              <Bar dataKey="rejected" fill="#EF4444" name="rejected" />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-
-        {/* Timeline Analysis */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Timeline Trend</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <LineChart data={timelineData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="month" />
-              <YAxis />
-              <Tooltip />
-              <Line type="monotone" dataKey="approved" stroke="#10B981" name="Approved" strokeWidth={3} />
-              <Line type="monotone" dataKey="rejected" stroke="#EF4444" name="Rejected" strokeWidth={3} />
-              <Line type="monotone" dataKey="total" stroke="#3B82F6" name="Total" strokeWidth={2} strokeDasharray="5 5" />
-            </LineChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
+     
 
       {/* Category-wise Analysis */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      {/* <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Category-wise Analysis</h3>
         <ResponsiveContainer width="100%" height={300}>
           <BarChart data={categoryWiseData} layout="horizontal">
@@ -293,7 +260,7 @@ export default function Reports() {
             <Bar dataKey="rejected" fill="#EF4444" name="Rejected" />
           </BarChart>
         </ResponsiveContainer>
-      </div>
+      </div> */}
 
       {/* Detailed Table */}
       {filteredItems.length > 0 && (

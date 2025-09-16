@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { LogIn, Mail, Lock } from 'lucide-react';
-
+import EKL from "../Escorts_Kubota_Limited.jpg"
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -39,8 +39,9 @@ export default function Login() {
       <div className="max-w-md w-full">
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <div className="text-center mb-8">
-            <div className="mx-auto h-16 w-16 bg-blue-600 rounded-full flex items-center justify-center mb-4">
-              <LogIn className="h-8 w-8 text-white" />
+            <div className="mx-auto h-24 w-24  rounded-full flex items-center justify-center mb-4">
+              {/* <LogIn className="h-8 w-8 text-white" /> */}
+              <img src={EKL} alt="EKL" />
             </div>
             <h1 className="text-2xl font-bold text-gray-900">IMQAP Portal</h1>
             <p className="text-gray-600 mt-2">Inward Material Quality Audit Process</p>
